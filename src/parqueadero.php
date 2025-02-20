@@ -281,7 +281,7 @@ $tipo="";
                          <td><?=$filaVehiculo['NOMBRES'] ?></td>
                          <td><?=$filaVehiculo['CELULAR'] ?></td>
                         <td>
-                            <a href="vehiculo.php?id=<?= $filaVehiculo['idpuesto'] ?>"> Egreso </a>
+                            <a href="factura.php?id=<?= $filaVehiculo['idpuesto'] ?>"> Egreso </a>
                             <a href="../controller/eliminar.php?id=<?= $filaVehiculo['idpuesto'] ?>"> Eliminar</a>
 
                         </td>
