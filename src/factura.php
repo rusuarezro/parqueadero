@@ -118,7 +118,8 @@
             <p><label for="fechaentrada">Fecha de Entrada: <?= $fechaentrada ?></label></p>
             <p><label for="fechasalida">Fecha de Salida <?= $fechasalida ?> </label></p>
             <p><label for="hora">Hora: <?= $horasTranscurridas ?></label></p>
-            <p><label for="valor">Valor a pagar: <?= $valorpaga ?></label></p>
+            <p><label for="valor">Valor a pagar: <?= $valorpaga
+             ?></label></p>
 
             <p>
             <input type="submit" name="Guardar" value="Guardar">
