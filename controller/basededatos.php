@@ -8,6 +8,7 @@ class basededatos{
     private $db_name; // Nombre de la Base de Datos
     private $conn;
     private $resultado;
+    private $buscar;
 
     public function __construct($db_host="localhost:3306", $db_user="nisbeth", $db_pass="pass12345", $db_name="dbjrparking"){
         $this->db_host=$db_host;
@@ -26,8 +27,15 @@ class basededatos{
             die("Connection failed: " . mysqli_connect_error());
         }
 
-        echo "Conexión exitosa a la base de datos.";
+        //echo "Conexión exitosa a la base de datos.";
       
+    }
+
+    public function buscar($sql){
+
+        $resultado=mysqli_query($this->conn,$sql);
+        return $buscar= mysqli_fetch_assoc($resultado);
+
     }
 
     public function executeQuery($sql){

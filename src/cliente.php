@@ -1,5 +1,7 @@
 <?php
 
+require_once("../controller/basededatos.php");
+
 $id="";
 $nit="";
 $nombre="";
@@ -38,13 +40,14 @@ $botones=0;
                 $estado=$_POST['estado'];
                 $fecha=date("Y-m-d H:i:s"); 
 
-                include("../controller/conexion.php");
+                $cliente=new basededatos();
+                $cliente->conexion();
+
                 $sql="INSERT INTO tbusuarios(IDENTIFICACION,NOMBRES,APELLIDOS,CELULAR,EMAIL,CONTRASENA,created_at,updated_at,PERFIL_FK,ESTADO_FK)";
                 $sql= $sql ." VALUES('".$nit."','".$nombre."','".$apellido."','".$telefono."','".$email."','".$pass."','".$fecha."','".$fecha."',$perfil,$estado)";
 
                 $sqlB="SELECT * FROM tbusuarios where IDENTIFICACION='".$nit."'";
-                $resultadoB=mysqli_query($conn,$sqlB);
-                $buscar= mysqli_fetch_assoc($resultadoB);
+                $buscar= $cliente->buscar($sqlB);
                 if(!empty($buscar)){ 
 
                     echo "<script language='JavaScript'> 
@@ -54,8 +57,7 @@ $botones=0;
 
                 }else{
 
-                    $resultado= mysqli_query($conn,$sql);
-                    //echo $resultado;
+                    $resultado=$cliente->executeQuery($sql);
                     if ($resultado){
                       
                         echo "<script language='JavaScript'> 
@@ -69,8 +71,7 @@ $botones=0;
                             </script>";
                     }
                 }
-               
-                mysqli_close($conn);
+                $cliente->closeConexion();
             
             }elseif(isset($_POST['buscar'])){
                 $nit=$_POST['nit'];
